@@ -1,8 +1,9 @@
 /* Navigation Bar */
 .main-nav {
-    background-color: #222222; /* Dark grey */
+    background-color: #222222; 
     padding: 15px;
     text-align: center;
+    position: relative; /* Add this line! */
 }
 
 .main-nav a {
@@ -258,66 +259,23 @@ select, input[type="number"] {
 }
 
 /* --- DARK MODE RULES --- */
-/* The toggle button sitting in the navbar */
+/* The toggle button pinned to the right corner */
 .theme-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
     background-color: transparent;
     color: white;
     border: 1px solid white;
-    padding: 5px 15px;
+    padding: 4px 10px; /* Made the box smaller */
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Made the text smaller */
     font-weight: bold;
     border-radius: 4px;
-    margin-left: 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .theme-btn:hover {
     background-color: white;
     color: #222222;
-}
-
-/* When the body has the 'dark-mode' class, these rules take over */
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-/* Make sections and cards dark */
-body.dark-mode section,
-body.dark-mode .member-card,
-body.dark-mode .newsletter-item {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-    box-shadow: 0 4px 8px rgba(255,255,255,0.05); /* Softer shadow for dark mode */
-}
-
-/* Brighten the red headings so they are easy to read on dark backgrounds */
-body.dark-mode h2 {
-    color: #ff5555; 
-    border-bottom: 2px solid #333333;
-}
-
-body.dark-mode .member-card h3,
-body.dark-mode .newsletter-item h3 {
-    color: #ffffff;
-}
-
-/* Adjust the President's gold card for dark mode */
-body.dark-mode .president-card {
-    background-color: #2a2615; 
-}
-
-/* Make form inputs dark */
-body.dark-mode input[type="text"],
-body.dark-mode input[type="email"],
-body.dark-mode input[type="number"],
-body.dark-mode select {
-    background-color: #333333;
-    color: white;
-    border: 1px solid #555555;
-}
-
-body.dark-mode .member-list li {
-    color: #e0e0e0;
 }
