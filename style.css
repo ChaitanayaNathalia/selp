@@ -265,12 +265,13 @@ select, input[type="number"] {
     position: absolute;
     top: 12px;
     right: 15px;
+    width: auto; /* THIS IS THE FIX! It stops the button from stretching */
     background-color: transparent;
     color: white;
     border: 1px solid white;
-    padding: 4px 10px; /* Made the box smaller */
+    padding: 4px 10px;
     cursor: pointer;
-    font-size: 0.8rem; /* Made the text smaller */
+    font-size: 0.8rem;
     font-weight: bold;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
