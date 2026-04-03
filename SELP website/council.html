@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialist EdNite Labour Party</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="council.html">The Council</a>
+        <a href="join.html">Join SELP</a>
+        <a href="newsletter.html">SELP Update</a>
+        <a href="2048.html">Play 2048</a>
+        <button id="theme-toggle" class="theme-btn">Dark Mode</button>
+    </nav>
+
+<header>
+        <img src="logo.jpg" alt="SELP Logo" class="party-logo">
+
+        <h1>SELP Community</h1>
+        <p>The good, the bad, and the ugly</p>
+    </header>
+
+    <hr>
+
+<section>
+        <h2>The SELP Council</h2>
+        <p>Meet the elected officials leading the Socialist EdNite Labour Party.</p>
+        
+        <div class="council-grid">
+            <div class="member-card president-card">
+                <h3>Deepanshu Sharma</h3>
+                <p class="role">President, Minister of Academics</p>
+            </div>
+
+            <div class="member-card">
+                <h3>चैतन्य नथालिया</h3>
+                <p class="role">Co-Founder, Minister of Communications</p>
+            </div>
+
+            <div class="member-card">
+                <h3>Bhumika Bhardwaj</h3>
+                <p class="role">Co-Founder</p>
+            </div>
+
+            <div class="member-card">
+                <h3>Augustya Vashisth</h3>
+                <p class="role">Minister of Music</p>
+            </div>
+
+            <div class="member-card">
+                <h3>Amulya Adhikari</h3>
+                <p class="role">Co-Founder</p>
+            </div>
+
+            <div class="member-card">
+                <h3>Samrat Sharma</h3>
+                <p class="role">Minister of Sports & Well-Being</p>
+            </div>
+
+            <div class="member-card">
+                <h3>Avni</h3>
+                <p class="role">Minister of Events</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Official Party Members</h2>
+    <ul class="member-list">
+        <li><strong>Amulya Adhikari</strong> — Ex-Student</li>
+        <li><strong>चैतन्य नथालिया</strong> — Student</li>
+        <li><strong>Bhumika Bhardwaj</strong> — Ex-Student</li>
+        <li><strong>Mayank Sethia</strong> — Ex-Student</li>
+        <li><strong>Lakshya Sharma</strong> — Ex-Student</li>
+        <li><strong>Uttkarsh</strong> — Ex-Student</li>
+        <li><strong>Suhani Harit</strong> — Ex-Student</li>
+        <li><strong>Shubham Thakur</strong> — Teacher</li>
+        <li><strong>Hemant Singh</strong> — Ex-Teacher</li>
+        <li><strong>Achintya Dubey</strong> — Ex-Teacher</li>
+        <li><strong>Aunty</strong> — Non-Teaching Staff</li>
+        <li><strong>Ritik Lohara (not really)</strong> — idek wdf this guy is</li>
+        <li><strong>Sonali Ramola</strong> — Teacher</li>
+        <li><strong>Deepanshu Sharma</strong> — Student</li>
+        <li><strong>Avni</strong> — Student</li>
+        <li><strong>Samrat Sharma</strong> — Student</li>
+        <li><strong>Hitesh</strong> — Student</li>
+        <li><strong>Augustya Vashisth</strong> — Student</li>
+        <li><strong>Daksh Mehra</strong> — Student</li>
+        <li><strong>Hardik Verma</strong> — Student</li>
+        <li><strong>Anshika Rana (non trustworthy)</strong> — Student</li>
+        <li><strong>Ashish Choudhary</strong> — Teacher</li>
+        <li><strong>Kartikay Sharma</strong> — Ex-Teacher</li>
+        <li><strong>Prabhjot Singh</strong> — Student</li>
+    </ul>
+    </section>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const positionSelect = document.getElementById('position');
+            const teacherLevelSelect = document.getElementById('teacher-level');
+            
+            // Grab all the hidden sections
+            const studentFields = document.getElementById('student-fields');
+            const teacherFields = document.getElementById('teacher-fields');
+            const juniorSubjectFields = document.getElementById('junior-subject-fields');
+            const seniorSubjectFields = document.getElementById('senior-subject-fields');
+            const staffFields = document.getElementById('staff-fields');
+            const exStudentFields = document.getElementById('ex-student-fields');
+            const exTeacherFields = document.getElementById('ex-teacher-fields');
+
+            // Function to hide everything
+            function hideAll() {
+                const allFields = document.querySelectorAll('.dynamic-field');
+                allFields.forEach(field => field.classList.add('hidden'));
+            }
+
+            // Listen for changes on the main Position dropdown
+            positionSelect.addEventListener('change', function() {
+                hideAll(); // Hide everything first
+                teacherLevelSelect.value = ""; // Reset the teacher dropdown if they switch roles
+                
+                const val = this.value;
+                if (val === 'Student') {
+                    studentFields.classList.remove('hidden');
+                } else if (val === 'Teacher') {
+                    teacherFields.classList.remove('hidden');
+                } else if (val === 'Non-teaching staff') {
+                    staffFields.classList.remove('hidden');
+                } else if (val === 'Ex-student') {
+                    exStudentFields.classList.remove('hidden');
+                } else if (val === 'Ex-teacher') {
+                    exTeacherFields.classList.remove('hidden');
+                }
+            });
+
+            // Listen for changes on the Teacher Level dropdown
+            teacherLevelSelect.addEventListener('change', function() {
+                // Hide both subject lists first
+                juniorSubjectFields.classList.add('hidden');
+                seniorSubjectFields.classList.add('hidden');
+                
+                // Show the right one based on what they picked
+                if (this.value === 'Junior') {
+                    juniorSubjectFields.classList.remove('hidden');
+                } else if (this.value === 'Senior') {
+                    seniorSubjectFields.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+    
+</body>
+<script src="theme.js"></script>
+</html>
