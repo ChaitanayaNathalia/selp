@@ -326,3 +326,52 @@ body.dark-mode select {
 body.dark-mode .member-list li {
     color: #e0e0e0;
 }
+
+/* --- 2048 GAME STYLING --- */
+.game-container {
+    display: inline-block;
+    background-color: #bbada0;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(4, 80px);
+    gap: 10px;
+}
+
+.tile {
+    width: 80px;
+    height: 80px;
+    background-color: #cdc1b4;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0px; /* Hides the actual numbers so only the image shows! */
+    font-weight: bold;
+    background-size: cover;
+    background-position: center;
+}
+
+#score-board {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #cc0000;
+}
+
+/* Image Mapping - Replace these with your actual image file names if they are .png instead of .jpg */
+.tile-2 { background-image: url('img-2.jpg'); }
+.tile-4 { background-image: url('img-4.jpg'); }
+.tile-8 { background-image: url('img-8.jpg'); }
+.tile-16 { background-image: url('img-16.jpg'); }
+.tile-32 { background-image: url('img-32.jpg'); }
+.tile-64 { background-image: url('img-64.jpg'); }
+.tile-128 { background-image: url('img-128.jpg'); }
+.tile-256 { background-image: url('img-256.jpg'); }
+.tile-512 { background-image: url('img-512.jpg'); }
+.tile-1024 { background-image: url('img-1024.jpg'); }
+.tile-2048 { background-image: url('img-2048.jpg'); }
