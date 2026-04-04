@@ -155,4 +155,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     document.addEventListener('keydown', control);
+
+    // --- MOBILE SWIPE CONTROLS ---
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    // 1. Where did their finger start?
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, {passive: false});
+
+    // 2. Where did their finger leave the screen?
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }, {passive: false});
+
+    // 3. The Math
+    function handleSwipe() {
+        let deltaX = touchEndX - touchStartX;
+        let deltaY = touchEndY - touchStartY;
+        
+        // Set a minimum swipe distance so accidental taps don't trigger a move
+        const threshold = 30; 
+
+        // If the swipe was too short, ignore it
+        if (Math.abs(deltaX) < threshold && Math.abs(deltaY) < threshold) return;
+
+        // Take snapshot BEFORE the swipe
+        let oldBoard = squares.map(square => square.innerHTML).join(',');
+
+        // Check if the swipe was mostly horizontal or mostly vertical
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // Horizontal swipe
+            if (deltaX > 0) moveRight();
+            else moveLeft();
+        } else {
+            // Vertical swipe
+            if (deltaY > 0) moveDown();
+            else moveUp();
+        }
+
+        // Take snapshot AFTER the swipe
+        let newBoard = squares.map(square => square.innerHTML).join(',');
+
+        // ONLY spawn a new tile if the board actually changed!
+        if (oldBoard !== newBoard) {
+            setTimeout(() => {
+                generate();
+                updateColors();
+            }, 100);
+        }
+    }
 });

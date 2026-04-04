@@ -334,6 +334,7 @@ body.dark-mode .member-list li {
     padding: 10px;
     border-radius: 8px;
     margin-top: 20px;
+    touch-action: none; /* THIS IS THE FIX! It stops the phone from scrolling when swiping the board */
 }
 
 .grid {
