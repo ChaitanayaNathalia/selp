@@ -129,15 +129,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Listen for arrow keys
     function control(e) {
-        // Prevent default scrolling when playing the game
-        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
-            e.preventDefault();
+        // Only run this if they press an actual arrow key
+        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.key) > -1) {
+            e.preventDefault(); // Stop the page from scrolling
+            
+            // 1. Take a snapshot of the board BEFORE the move
+            let oldBoard = squares.map(square => square.innerHTML).join(',');
+            
+            // 2. Execute the move
+            if (e.key === 'ArrowLeft') moveLeft();
+            else if (e.key === 'ArrowRight') moveRight();
+            else if (e.key === 'ArrowUp') moveUp();
+            else if (e.key === 'ArrowDown') moveDown();
+            
+            // 3. Take a snapshot of the board AFTER the move
+            let newBoard = squares.map(square => square.innerHTML).join(',');
+            
+            // 4. ONLY spawn a new tile if the board actually changed!
+            if (oldBoard !== newBoard) {
+                setTimeout(() => {
+                    generate();
+                    updateColors();
+                }, 100); // A tiny 100ms delay makes the spawn feel more natural!
+            }
         }
-        
-        if (e.key === 'ArrowLeft') { moveLeft(); generate(); updateColors(); }
-        else if (e.key === 'ArrowRight') { moveRight(); generate(); updateColors(); }
-        else if (e.key === 'ArrowUp') { moveUp(); generate(); updateColors(); }
-        else if (e.key === 'ArrowDown') { moveDown(); generate(); updateColors(); }
     }
     document.addEventListener('keydown', control);
 });
