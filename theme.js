@@ -21,4 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggle.innerText = 'Dark Mode';
         }
     });
+
+    // --- HAMBURGER MENU LOGIC ---
+    const menuOpen = document.getElementById('menu-open');
+    const menuClose = document.getElementById('menu-close');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuOpen && menuClose && navLinks) {
+        menuOpen.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    }
 });
